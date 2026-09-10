@@ -101,7 +101,7 @@ class Controller extends Package
     private function registerRoutes()
     {
         Route::register('/aws/health', function () {
-            return new Response('OK', Response::HTTP_ACCEPTED);
+            return new Response('OK', Response::HTTP_OK);
         });
     }
 
