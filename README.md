@@ -4,7 +4,7 @@ ConcreteCMS tools for AWS deployments.
 
 ## Status
 
-This package is currently in Release Candidate status (`1.0.0-rc.1`). The package currently provides
+Version `1.0.0`. The package currently provides
 a health-check endpoint and the scaffolding needed for additional AWS deployment
 tools. AWS credentials, infrastructure provisioning, and service-specific
 integrations are not configured by this package yet.
