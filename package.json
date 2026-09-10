@@ -1,0 +1,24 @@
+{
+	"name": "aws",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/limegreentangerine/aws.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/limegreentangerine/aws/issues"
+	},
+	"homepage": "https://github.com/limegreentangerine/aws#readme",
+	"devDependencies": {
+		"prettier": "^3.9.6"
+	}
+}
