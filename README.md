@@ -4,7 +4,7 @@ ConcreteCMS tools for AWS deployments.
 
 ## Status
 
-This package is currently in beta (`1.0.0-beta.1`). The package currently provides
+This package is currently in Release Candidate status (`1.0.0-rc.1`). The package currently provides
 a health-check endpoint and the scaffolding needed for additional AWS deployment
 tools. AWS credentials, infrastructure provisioning, and service-specific
 integrations are not configured by this package yet.
@@ -44,9 +44,17 @@ package in a ConcreteCMS project, copy the templates into the project's
 ./vendor/bin/install-ebextensions
 ```
 
-The command creates `.ebextensions/` when needed and does not overwrite
-configuration files that already exist. Review the generated configuration
-before deploying the project to Elastic Beanstalk.
+Run the command from the project root. It creates `.ebextensions/` when needed
+and does not overwrite configuration files that already exist. Review the
+generated configuration before deploying the project to Elastic Beanstalk.
+
+The installer currently provides:
+
+| File                 | Purpose                                       |
+| -------------------- | --------------------------------------------- |
+| `cache.config`       | Configures browser caching for static assets  |
+| `project.config`     | Sets PHP memory and upload limits             |
+| `server-logs.config` | Adds PHP-FPM errors to Elastic Beanstalk logs |
 
 ## Health check
 
