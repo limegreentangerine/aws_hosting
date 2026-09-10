@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+if (!isset($_composer_autoload_path)) {
+    fwrite(STDERR, "This command must be run through Composer.\n");
+    exit(1);
+}
+
+$packageDirectory = dirname(__DIR__);
+$source = $packageDirectory . '/resources/.ebextensions';
+
+$projectRoot = dirname($_composer_autoload_path);
+$destination = $projectRoot . '/.ebextensions';
+
+if (!is_dir($source)) {
+    fwrite(STDERR, "Source directory does not exist: {$source}\n");
+    exit(1);
+}
+
+if (!is_dir($destination) && !mkdir($destination, 0755, true) && !is_dir($destination)) {
+    fwrite(STDERR, "Unable to create destination directory: {$destination}\n");
+    exit(1);
+}
+
+foreach (glob($source . '/*') as $file) {
+    $target = $destination . '/' . basename($file);
+
+    if (is_dir($file)) {
+        continue;
+    }
+
+    if (file_exists($target)) {
+        echo "Skipped (already exists): " . basename($file) . PHP_EOL;
+        continue;
+    }
+
+    if (!copy($file, $target)) {
+        fwrite(STDERR, "Unable to copy: {$file}\n");
+        exit(1);
+    }
+
+    echo "Copied: " . basename($file) . PHP_EOL;
+}
+
+echo "Elastic Beanstalk configuration installed.\n";
