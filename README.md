@@ -33,6 +33,21 @@ To work on the package from a checkout, install all PHP dependencies:
 composer install
 ```
 
+## AWS Elastic Beanstalk
+
+The package includes Elastic Beanstalk configuration templates for PHP
+settings, HTTP caching, and application log collection. After installing the
+package in a ConcreteCMS project, copy the templates into the project's
+`.ebextensions/` directory:
+
+```bash
+./vendor/bin/install-ebextensions
+```
+
+The command creates `.ebextensions/` when needed and does not overwrite
+configuration files that already exist. Review the generated configuration
+before deploying the project to Elastic Beanstalk.
+
 ## Health check
 
 After the package is active, request:
@@ -83,14 +98,16 @@ npm install
 
 ## Project layout
 
-| Path                     | Purpose                                             |
-| ------------------------ | --------------------------------------------------- |
-| `controller.php`         | ConcreteCMS package metadata and route registration |
-| `src/`                   | Package PHP classes                                 |
-| `tests/`                 | PHPUnit tests                                       |
-| `composer.json`          | PHP dependencies and Composer scripts               |
-| `package.json`           | Node.js tooling and Prettier configuration          |
-| `.php-cs-fixer.dist.php` | PHP-CS-Fixer configuration                          |
+| Path                       | Purpose                                             |
+| -------------------------- | --------------------------------------------------- |
+| `controller.php`           | ConcreteCMS package metadata and route registration |
+| `src/`                     | Package PHP classes                                 |
+| `tests/`                   | PHPUnit tests                                       |
+| `resources/.ebextensions/` | Elastic Beanstalk configuration templates           |
+| `bin/install-ebextensions` | Installs the Elastic Beanstalk templates            |
+| `composer.json`            | PHP dependencies and Composer scripts               |
+| `package.json`             | Node.js tooling and Prettier configuration          |
+| `.php-cs-fixer.dist.php`   | PHP-CS-Fixer configuration                          |
 
 ## License
 

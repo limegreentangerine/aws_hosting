@@ -8,11 +8,12 @@ if (!isset($_composer_autoload_path)) {
     exit(1);
 }
 
+$folderName = '.ebextensions';
 $packageDirectory = dirname(__DIR__);
-$source = $packageDirectory . '/resources/.ebextensions';
+$source = $packageDirectory . '/resources/' . $folderName;
 
 $projectRoot = dirname($_composer_autoload_path);
-$destination = $projectRoot . '/.ebextensions';
+$destination = $projectRoot . '/../' . $folderName;
 
 if (!is_dir($source)) {
     fwrite(STDERR, "Source directory does not exist: {$source}\n");
@@ -41,7 +42,7 @@ foreach (glob($source . '/*') as $file) {
         exit(1);
     }
 
-    echo "Copied: " . basename($file) . PHP_EOL;
+    echo "Copied: " . basename($file) . " to " . $folderName . PHP_EOL;
 }
 
 echo "Elastic Beanstalk configuration installed.\n";
