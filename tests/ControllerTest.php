@@ -33,11 +33,11 @@ namespace {
     class_alias(\Concrete\Core\Support\Facade\Route::class, 'Route');
 }
 
-namespace Aws\Tests {
+namespace AwsHosting\Tests {
 
     use PHPUnit\Framework\TestCase;
-    use Concrete\Package\Aws\Controller;
     use Concrete\Core\Support\Facade\Route;
+    use Concrete\Package\AwsHosting\Controller;
     use Symfony\Component\HttpFoundation\Response;
 
     require_once dirname(__DIR__) . '/controller.php';
@@ -49,9 +49,9 @@ namespace Aws\Tests {
             $controller = (new \ReflectionClass(Controller::class))
                 ->newInstanceWithoutConstructor();
 
-            self::assertSame('AWS', $controller->getPackageName());
+            self::assertSame('AWS Hosting', $controller->getPackageName());
             self::assertSame(
-                'ConcreteCMS tools for AWS deployments',
+                'ConcreteCMS tools for AWS hosted deployments',
                 $controller->getPackageDescription(),
             );
         }

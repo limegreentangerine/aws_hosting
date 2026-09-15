@@ -11,7 +11,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="AWS">
+        <testsuite name="AWS Hosting">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

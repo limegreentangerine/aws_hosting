@@ -46,6 +46,6 @@
 		]
 	},
 	"bin": [
-        "bin/install-ebextensions"
-    ]
+		"bin/install-ebextensions"
+	]
 }
