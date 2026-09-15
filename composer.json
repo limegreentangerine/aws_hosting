@@ -1,6 +1,6 @@
 {
-	"name": "limegreentangerine/aws",
-	"description": "ConcreteCMS tools for AWS deployments",
+	"name": "limegreentangerine/aws_hosting",
+	"description": "ConcreteCMS tools for AWS hosted deployments",
 	"type": "concrete5-package",
 	"license": "MIT",
 	"autoload": {
@@ -16,6 +16,7 @@
 	],
 	"minimum-stability": "stable",
 	"require-dev": {
+		"php": "^8.4",
 		"phpunit/phpunit": "^13.3",
 		"concrete5/core": "^9.2",
 		"friendsofphp/php-cs-fixer": "^3.95"
@@ -26,7 +27,6 @@
 		}
 	},
 	"require": {
-		"php": "^8.4",
 		"composer-runtime-api": "^2.2"
 	},
 	"scripts": {
