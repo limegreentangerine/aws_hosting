@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Aws;
+namespace Concrete\Package\AwsHosting;
 
 use Route;
 use Concrete\Core\Package\Package;
@@ -15,7 +15,7 @@ class Controller extends Package
      *
      * @var string
      */
-    protected $pkgHandle = 'aws';
+    protected $pkgHandle = 'aws_hosting';
 
     /**
      * The packages version.
@@ -83,7 +83,7 @@ class Controller extends Package
      * @var array
      */
     protected $pkgAutoloaderRegistries = [
-        'src' => '\Aws',
+        'src' => '\AwsHosting',
     ];
 
     /**
@@ -107,12 +107,12 @@ class Controller extends Package
 
     public function getPackageName()
     {
-        return t('AWS');
+        return t('AWS Hosting');
     }
 
     public function getPackageDescription()
     {
-        return t('ConcreteCMS tools for AWS deployments');
+        return t('ConcreteCMS tools for AWS hosted deployments');
     }
 
     public function on_start()
