@@ -2,7 +2,7 @@
 	"name": "limegreentangerine/aws_hosting",
 	"description": "ConcreteCMS tools for AWS hosted deployments",
 	"type": "concrete5-package",
-	"license": "MIT",
+	"license": "proprietary",
 	"autoload": {
 		"psr-4": {
 			"Aws\\": "src/"
