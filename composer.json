@@ -27,7 +27,8 @@
 		}
 	},
 	"require": {
-		"composer-runtime-api": "^2.2"
+		"composer-runtime-api": "^2.2",
+		"limegreentangerine/class_kit": "^1.0"
 	},
 	"scripts": {
 		"test": "php -d error_reporting=8191 vendor/bin/phpunit",
@@ -47,5 +48,11 @@
 	},
 	"bin": [
 		"bin/install-ebextensions"
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://packages.limegreentangerine.net"
+		}
 	]
 }
