@@ -25,6 +25,13 @@ jobs:
                   extensions: mbstring
                   coverage: none
 
+            - name: Configure Composer
+              run: |
+                  composer config --global custom-headers.packages.limegreentangerine.net \
+                      "CF-Access-Client-Id: ${{ secrets.CLOUDFLARE_ACCESS_CLIENT_ID }}" \
+                      "CF-Access-Client-Secret: ${{ secrets.CLOUDFLARE_ACCESS_CLIENT_SECRET }}"
+
+
             - name: Install dependencies
               run: composer install --no-interaction --no-progress --prefer-dist
 
