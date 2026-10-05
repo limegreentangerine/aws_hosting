@@ -1,85 +1,64 @@
-# AWS
+# AWS Hosting
 
-ConcreteCMS tools for AWS deployments.
+AWS deployment utilities for Concrete CMS.
 
-## Status
-
-Version `1.0.0`. The package currently provides
-a health-check endpoint and the scaffolding needed for additional AWS deployment
-tools. AWS credentials, infrastructure provisioning, and service-specific
-integrations are not configured by this package yet.
+The package currently provides a health-check endpoint and optional AWS
+Elastic Beanstalk configuration templates. It does not provision AWS
+infrastructure or configure AWS credentials.
 
 ## Requirements
 
+- Concrete CMS 9.5.0 or newer
 - PHP 8.4 or newer
-- ConcreteCMS 9.5.0 or newer
-- Composer
-- Node.js and npm (only required for the JavaScript formatting checks)
+- The `class_kit` Concrete CMS package
 
 ## Installation
 
-Install the package with Composer:
-
-```bash
-composer require limegreentangerine/aws
-```
-
-Then install and activate the **AWS** package from the ConcreteCMS dashboard.
-The package handle is `aws`.
-
-To work on the package from a checkout, install all PHP dependencies:
-
-```bash
-composer install
-```
-
-## AWS Elastic Beanstalk
-
-The package includes Elastic Beanstalk configuration templates for PHP
-settings, HTTP caching, and application log collection. After installing the
-package in a ConcreteCMS project, copy the templates into the project's
-`.ebextensions/` directory:
-
-```bash
-./vendor/bin/install-ebextensions
-```
-
-Run the command from the project root. It creates `.ebextensions/` when needed
-and does not overwrite configuration files that already exist. Review the
-generated configuration before deploying the project to Elastic Beanstalk.
-
-The installer currently provides:
-
-| File                 | Purpose                                       |
-| -------------------- | --------------------------------------------- |
-| `cache.config`       | Configures browser caching for static assets  |
-| `project.config`     | Sets PHP memory and upload limits             |
-| `server-logs.config` | Adds PHP-FPM errors to Elastic Beanstalk logs |
+Place the package in the Concrete CMS site's `packages/aws_hosting` directory,
+then install and activate **AWS Hosting** from the Concrete CMS dashboard
+under **Extend > Install**. The package handle is `aws_hosting`.
 
 ## Health check
 
-After the package is active, request:
+When the package is active, the site responds to requests at:
 
 ```text
 /aws/health
 ```
 
-For example, if the site is running at `https://example.com`:
+For example:
 
 ```bash
 curl -i https://example.com/aws/health
 ```
 
-The endpoint returns `200 OK` with the response body `OK`. It can be used
-by an AWS load balancer or deployment monitor to verify that the ConcreteCMS
-application and package are responding.
+The endpoint returns HTTP `200 OK` with the body `OK`. It can be used by a
+load balancer or deployment monitor to check that the application is responding.
+
+## AWS Elastic Beanstalk
+
+The package includes `.ebextensions` templates for PHP settings, static asset
+caching, and PHP-FPM error log collection. To copy the templates into the
+Concrete CMS project, run this command from the project root after installing
+the package:
+
+```bash
+./vendor/bin/install-ebextensions
+```
+
+The command creates `.ebextensions/` if needed and skips files that already
+exist; it does not overwrite existing configuration. Review the resulting
+files before deploying to Elastic Beanstalk.
 
 ## Development
 
-PHP source files are in `src/`, and PHPUnit tests belong in `tests/`. The package
-uses the `Aws\` namespace for classes in `src/`.
+Install the development dependencies with Composer:
 
-Run the test suite:
+```bash
+composer install
+```
+
+Run the PHPUnit tests:
 
 ```bash
 composer test
@@ -97,26 +76,6 @@ Apply the configured formatters:
 composer format
 ```
 
-The PHP formatter is PHP-CS-Fixer, and the JavaScript/Markdown formatter is
-Prettier. JavaScript dependencies are installed with:
-
-```bash
-npm install
-```
-
-## Project layout
-
-| Path                       | Purpose                                             |
-| -------------------------- | --------------------------------------------------- |
-| `controller.php`           | ConcreteCMS package metadata and route registration |
-| `src/`                     | Package PHP classes                                 |
-| `tests/`                   | PHPUnit tests                                       |
-| `resources/.ebextensions/` | Elastic Beanstalk configuration templates           |
-| `bin/install-ebextensions` | Installs the Elastic Beanstalk templates            |
-| `composer.json`            | PHP dependencies and Composer scripts               |
-| `package.json`             | Node.js tooling and Prettier configuration          |
-| `.php-cs-fixer.dist.php`   | PHP-CS-Fixer configuration                          |
-
 ## License
 
-This project is released under the [MIT License](https://opensource.org/license/mit/).
+This project is licensed under the MIT License. See [LICENSE.TXT](LICENSE.TXT).
