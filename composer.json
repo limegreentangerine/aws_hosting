@@ -44,15 +44,12 @@
 		"format:check": [
 			"@format:php:check",
 			"@format:js:check"
+		],
+		"post-install-cmd": [
+			"npm install"
 		]
 	},
 	"bin": [
 		"bin/install-ebextensions"
-	],
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "https://packages.limegreentangerine.net"
-		}
 	]
 }
