@@ -45,4 +45,18 @@ foreach (glob($source . '/*') as $file) {
     echo "Copied: " . basename($file) . " to " . $folderName . PHP_EOL;
 }
 
+$fileIgnoreName = '.ebignore';
+
+$source = $packageDirectory . '/resources/' . $fileIgnoreName;
+$destination = $projectRoot . '/../' . $fileIgnoreName;
+
+if (file_exists($destination)) {
+    echo "Skipped (already exists): " . basename($destination) . PHP_EOL;
+}
+
+if (!copy($source, $destination)) {
+    fwrite(STDERR, "Unable to copy: {$source}\n");
+    exit(1);
+}
+
 echo "Elastic Beanstalk configuration installed.\n";
