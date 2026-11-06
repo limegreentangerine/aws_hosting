@@ -78,6 +78,7 @@ class Controller extends PackageController
      */
     protected $packageDependencies = [
         'class_kit' => true,
+        'cloudflare_kit' => true,
     ];
 
     /**
