@@ -1,0 +1,6 @@
+.git/
+.env
+node_modules/
+public/application/files/
+public/application/config/generated_overrides/
+public/application/config/doctrine/proxies/
