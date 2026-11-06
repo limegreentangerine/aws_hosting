@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b1c731438202a31e9f9689cad6c1f66",
+    "content-hash": "3567afb8ca29917dface5146b8418ad5",
     "packages": [
         {
             "name": "limegreentangerine/class_kit",
@@ -55,6 +55,53 @@
                 "source": "https://github.com/limegreentangerine/ClassKit/tree/2.0.3"
             },
             "time": "2026-11-04T11:22:22+00:00"
+        },
+        {
+            "name": "limegreentangerine/cloudflare_kit",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/limegreentangerine/CloudflareKit.git",
+                "reference": "e0bdb45ff75387efdfadd9a2e261c76e5b7340e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/limegreentangerine/CloudflareKit/zipball/e0bdb45ff75387efdfadd9a2e261c76e5b7340e8",
+                "reference": "e0bdb45ff75387efdfadd9a2e261c76e5b7340e8",
+                "shasum": ""
+            },
+            "require": {
+                "limegreentangerine/class_kit": "^2.0"
+            },
+            "require-dev": {
+                "concrete5/core": "^9.2",
+                "friendsofphp/php-cs-fixer": "^3.95",
+                "php": "^8.4",
+                "phpstan/phpstan": "^2.2",
+                "phpunit/phpunit": "^11"
+            },
+            "type": "concrete5-package",
+            "autoload": {
+                "psr-4": {
+                    "CloudflareKit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Lee Jones",
+                    "email": "prolific.jones82@gmail.com"
+                }
+            ],
+            "description": "Cloudflare API actions",
+            "support": {
+                "issues": "https://github.com/limegreentangerine/CloudflareKit/issues",
+                "source": "https://github.com/limegreentangerine/CloudflareKit/tree/1.0.4"
+            },
+            "time": "2026-11-06T15:17:26+00:00"
         }
     ],
     "packages-dev": [
