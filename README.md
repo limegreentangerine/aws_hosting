@@ -47,8 +47,14 @@ the package:
 ```
 
 The command creates `.ebextensions/` if needed and skips files that already
-exist; it does not overwrite existing configuration. Review the resulting
-files before deploying to Elastic Beanstalk.
+exist; it does not overwrite existing configuration. To overwrite existing
+files, use the `--force` or `-f` flag:
+
+```bash
+./vendor/bin/install-ebextensions --force
+```
+
+Review the resulting files before deploying to Elastic Beanstalk.
 
 ## Development
 
