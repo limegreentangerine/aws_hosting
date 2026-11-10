@@ -8,6 +8,8 @@ if (!isset($_composer_autoload_path)) {
     exit(1);
 }
 
+$force = in_array('--force', $argv, true) || in_array('-f', $argv, true);
+
 $folderName = '.ebextensions';
 $packageDirectory = dirname(__DIR__);
 $source = $packageDirectory . '/resources/' . $folderName;
@@ -33,8 +35,10 @@ foreach (glob($source . '/*') as $file) {
     }
 
     if (file_exists($target)) {
-        echo "Skipped (already exists): " . basename($file) . PHP_EOL;
-        continue;
+        if (!$force) {
+            echo "Skipped (already exists): " . basename($file) . PHP_EOL;
+            continue;
+        }
     }
 
     if (!copy($file, $target)) {
@@ -51,10 +55,14 @@ $source = $packageDirectory . '/resources/' . $fileIgnoreName;
 $destination = $projectRoot . '/../' . $fileIgnoreName;
 
 if (file_exists($destination)) {
-    echo "Skipped (already exists): " . basename($destination) . PHP_EOL;
+    if (!$force) {
+        echo "Skipped (already exists): " . basename($destination) . PHP_EOL;
+    }
 }
 
-if (!copy($source, $destination)) {
+if (!$force && file_exists($destination)) {
+    fwrite(STDERR, "Skipped (already exists): {$destination}\n");
+} elseif (!copy($source, $destination)) {
     fwrite(STDERR, "Unable to copy: {$source}\n");
     exit(1);
 }
